@@ -1,0 +1,81 @@
+<div class="container">
+<div class="game">
+<div class="heading">
+<div class="page-header">
+<h3>2048 Game!</h3>
+</div> 
+<p>Join the numbers and get to the 2048 tile! 
+<a class="restart-button" onclick="start()">Click here for a New Game</a>.
+</p>
+<div class="scores-container">
+<div class="score-container" id="score-container">0</div>
+<div class="best-container">0</div>
+</div>
+</div>
+
+<div class="above-game">
+</div>
+
+<div class="game-container">
+<div class="game-message">
+<p></p>
+<div class="lower">
+<a class="keep-playing-button">Keep going</a>
+<a class="retry-button">Try again</a>
+<a class="save-button">Save your score</a>
+</div>
+</div>
+
+<div class="grid-container">
+<div class="grid-row">
+<div class="grid-cell"></div>
+<div class="grid-cell"></div>
+<div class="grid-cell"></div>
+<div class="grid-cell"></div>
+</div>
+<div class="grid-row">
+<div class="grid-cell"></div>
+<div class="grid-cell"></div>
+<div class="grid-cell"></div>
+<div class="grid-cell"></div>
+</div>
+<div class="grid-row">
+<div class="grid-cell"></div>
+<div class="grid-cell"></div>
+<div class="grid-cell"></div>
+<div class="grid-cell"></div>
+</div>
+<div class="grid-row">
+<div class="grid-cell"></div>
+<div class="grid-cell"></div>
+<div class="grid-cell"></div>
+<div class="grid-cell"></div>
+</div>
+</div>
+
+<div class="tile-container" id="tile-container">
+<%# render html: @drawing.html_safe %>
+</div>
+</div>
+
+<div class="page-header">
+<h3>How to play</h3>
+</div> 
+<p>
+<strong>How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong>
+</p>
+<div class="page-header">
+<h3>Copyright</h3>
+</div> 
+<p>
+Here is the official version of the game: <a href="http://git.io/2048">http://git.io/2048.</a>.  Created by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli.</a> Based on <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank">1024 by Veewo Studio</a> and conceptually similar to <a href="http://asherv.com/threes/" target="_blank">Threes by Asher Vollmer.</a>
+</p>
+<div class="page-header">
+<h3>This version of the game</h3>
+</div> 
+<p>
+You can store your best scores, and see them all in a table.</br>
+You can also compete with other players who save their scores, and try to bring yourself in the leader board.</br>
+</p>
+</div>
+</div>
