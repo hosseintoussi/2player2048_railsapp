@@ -7,6 +7,13 @@ Rails.application.routes.draw do
 root 'board#index'
 post '/move' => 'board#move'
 post '/start' => 'board#start'
+post '/create' => 'board#create_room'
+post '/update' => 'board#update_gamedata'
+post '/load' => 'board#load_game'
+post '/join' => 'board#join_room'
+post '/sendchat' => 'board#send_chat'
+get '/game' => 'board#game'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
