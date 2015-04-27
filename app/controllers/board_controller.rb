@@ -36,10 +36,7 @@ class BoardController < ApplicationController
   def join_room
     if $redis.exists(params['room'])
       data = JSON.parse($redis.get(params['room']))
-      if data['hostname'] == params['name']
-        session[:room]=params['room']
-        session[:user]=params['name']
-      elsif data['guestname'] == params['name']
+      if data['hostname'] == params['name'] || data['guestname'] == params['name']
         session[:room]=params['room']
         session[:user]=params['name']
       else
