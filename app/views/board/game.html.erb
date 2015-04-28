@@ -1,0 +1,90 @@
+<body onload="loadgame()" >
+	<div class="container">
+		<div class="game">
+			<div class="heading">
+				<div class="page-header">
+					<h3 id="room-name"><%= session[:room]%></h3>
+					<div>
+					<span>Who's turn is it now: <span><span id="turn"></span>
+				</div>
+					<div>
+					<span>Current Score:</span><span id="score">0</span>
+				</div>
+				</div> 
+			</div>
+
+			<div class="above-game">
+			</div>
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="game-container">
+						<div class="game-message">
+							<p></p>
+							<div class="lower">
+								<a class="keep-playing-button">Keep going</a>
+								<a class="retry-button">Try again</a>
+								<a class="save-button">Save your score</a>
+
+							</div>
+
+						</div>
+							<div class="grid-container">
+								<div class="grid-row">
+									<div class="grid-cell"></div>
+									<div class="grid-cell"></div>
+									<div class="grid-cell"></div>
+									<div class="grid-cell"></div>
+								</div>
+								<div class="grid-row">
+									<div class="grid-cell"></div>
+									<div class="grid-cell"></div>
+									<div class="grid-cell"></div>
+									<div class="grid-cell"></div>
+								</div>
+								<div class="grid-row">
+									<div class="grid-cell"></div>
+									<div class="grid-cell"></div>
+									<div class="grid-cell"></div>
+									<div class="grid-cell"></div>
+								</div>
+								<div class="grid-row">
+									<div class="grid-cell"></div>
+									<div class="grid-cell"></div>
+									<div class="grid-cell"></div>
+									<div class="grid-cell"></div>
+								</div>
+							</div>
+
+						<div class="tile-container" id="tile-container">
+						
+						</div>
+					</div>
+
+				</div>
+				<div class="col-lg-4">
+					<div class="scores-container">
+					</div>
+					<br>
+					<form role="form">
+						<div class="row">
+							<textarea type="text" readonly="readonly" class="form-control" rows="10" id="chat-area"></textarea>
+							<div class="form-group">
+								<p>Type your message here: </p>
+								<input id="chat-input" type="text" class="form-control">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			
+		</div>
+
+		<div class="page-header">
+			<h3>This version of the game</h3>
+		</div> 
+		<p>
+			This is a 2 player version of 2048. Players take turn to play.</br>
+		</p>
+	</div>
+</div>
+</body>
