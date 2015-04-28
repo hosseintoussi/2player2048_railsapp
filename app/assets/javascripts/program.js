@@ -99,36 +99,37 @@ function move(move){
 }
 
 $(document).ready(function() {
-	// action on key down
-$(document).keydown(function(e) {
-	if(e.which == 13) {
-		$.ajax({  
-			type: "POST",  
-			url: "/sendchat",  
-			data: {'room' : document.getElementById("room-name").innerHTML, 'user' : document.getElementById("user-name").innerHTML, 'message' : document.getElementById("chat-input").value},  
-			success: function(data) {  
-				$('#chat-input').val("");
-				console.log('message sent...'); 
-			}  
-		});
-	}
+	console.log("test")
+		// action on key down
+	$(document).keydown(function(e) {
+		if(e.which == 13) {
+			$.ajax({  
+				type: "POST",  
+				url: "/sendchat",  
+				data: {'room' : document.getElementById("room-name").innerHTML, 'user' : document.getElementById("user-name").innerHTML, 'message' : document.getElementById("chat-input").value},  
+				success: function(data) {  
+					$('#chat-input').val("");
+					console.log('message sent...'); 
+				}  
+			});
+		}
 
-	if(e.which == 38) {
-		move('w');
-	}
+		if(e.which == 38) {
+			move('w');
+		}
 
-	if(e.which == 39) {
-		move('d');
-	}
+		if(e.which == 39) {
+			move('d');
+		}
 
-	if(e.which == 40) {
-		move('s');
-	}
+		if(e.which == 40) {
+			move('s');
+		}
 
-	if(e.which == 37) {
-		move('a');
-	}
-});
+		if(e.which == 37) {
+			move('a');
+		}
+	});
 
 });
 
