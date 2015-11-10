@@ -13,5 +13,8 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require foundation
 //= require_tree .
+
+// This is not working because of a bug in foundation
+$(function(){ $(document).foundation(); });

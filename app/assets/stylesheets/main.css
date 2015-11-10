@@ -190,7 +190,7 @@ hr {
 .grid-container {
   float: left;
        position: absolute;
-  z-index: 1; 
+  z-index: 1;
  }
 .chat{
   float: right;
@@ -222,7 +222,7 @@ hr {
   box-sizing: border-box; }
 }
 .text-container{
-    
+
   margin-top: 0px;
  width: 250px;
  height: 100px;
@@ -557,7 +557,7 @@ hr {
     width: 55%;
     display: block;
     box-sizing: border-box;
-    line-height: 1.65; 
+    line-height: 1.65;
     float: left;}
 
   .restart-button {

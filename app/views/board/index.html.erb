@@ -1,42 +1,56 @@
-		<div class="row">
-			<div class="col-lg-6 col-sm-6">
 
-				<div class="panel panel-default">
-					<div class="panel-heading">Create a new room here</div>
-					<div class="panel-body">
-							<div class="form-group">
-								<label for="room">Room name:</label>
-								<input type="room" class="form-control" id="room">
-							</div>
-							<div class="form-group">
-								<label for="hostname">Your name:</label>
-								<input type="hostname" class="form-control" id="hostname">
-							</div>
-							<div class="form-group">
-								<label for="gurstname">Guest name:</label>
-								<input type="guestname" class="form-control" id="guestname">
-							</div>
-							<button type="submit" onclick="create()" class="btn btn-default">Create</button>
+<div class="row" style="margin-top: 8em" data-equalizer>
+	<div class="large-6 columns">
 
-					</div>
+		<div class="panel" data-equalizer-watch>
+			<h4>Create a new room</h4>
+			<div class="panel-body">
+				<div class="form-group">
+					<input type="text" placeholder="Room Name" id="room"/>
 				</div>
-				
-			</div>
+				<div class="form-group">
+					<label for="hostname">Your name:</label>
+					<input type="text" id="hostname"/>
+				</div>
+				<div class="form-group">
+					<label for="gurstname">Guest name:</label>
+					<input type="text" id="guestname"/>
+				</div>
+				<button class="button tiny" type="submit" onclick="create()" class="btn btn-default">CREATE</button>
 
-			<div class="col-lg-6 col-sm-6">
-					<div class="panel panel-default">
-					<div class="panel-heading">Join a room here</div>
-					<div class="panel-body">
-							<div class="form-group">
-								<label for="room">Room name:</label>
-								<input type="room" class="form-control" id="room1">
-							</div>
-							<div class="form-group">
-								<label for="name">Your name:</label>
-								<input type="name" class="form-control" id="name1">
-							</div>
-							<button type="submit" onclick="join()" class="btn btn-default">Join</button>
-						
-					</div>
-				</div>			</div>
+			</div>
 		</div>
+
+	</div>
+
+	<div class="large-6 columns">
+		<div class="panel" data-equalizer-watch>
+			<h4>Join a room</h4>
+			<div class="panel-body">
+				<div class="form-group">
+					<input type="text" placeholder="Room Name" id="room1"/>
+				</div>
+				<div class="form-group">
+					<label for="name">Your name:</label>
+					<input type="text" id="name1"/>
+				</div>
+				<button class="button tiny" type="submit" onclick="join()" class="btn btn-default">JOIN</button>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="large-12 columns">
+		<div class="panel">
+			<h4>This version of the game</h4>
+			<p>
+				This is a 2 player version of 2048. Players take turn to play.</br>
+			</p>
+		</div>
+	</div>
+</div>
+
+<!-- temp workaround! foundation's bug does not let it be included in application.js -->
+<script>
+	$(document).foundation();
+</script>
