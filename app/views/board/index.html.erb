@@ -1,42 +1,33 @@
 
 <div class="row" style="margin-top: 8em" data-equalizer>
-	<div class="large-6 columns">
+	<div class="large-12 columns">
+		<%= render partial: 'layouts/messages' %>
+	</div>
 
+	<div class="large-6 columns">
 		<div class="panel" data-equalizer-watch>
 			<h4>Create a new room</h4>
-			<div class="panel-body">
-				<div class="form-group">
-					<input type="text" placeholder="Room Name" id="room"/>
-				</div>
-				<div class="form-group">
-					<label for="hostname">Your name:</label>
-					<input type="text" id="hostname"/>
-				</div>
-				<div class="form-group">
-					<label for="gurstname">Guest name:</label>
-					<input type="text" id="guestname"/>
-				</div>
-				<button class="button tiny" type="submit" onclick="create()" class="btn btn-default">CREATE</button>
-
-			</div>
+			<%= form_tag(create_path,  method: "post") do %>
+			<input type="text" placeholder="Room Name" name="room[room]"/>
+			<label for="hostname">Your name:</label>
+			<input type="text" id="hostname"  name="room[hostname]"/>
+			<label for="gurstname">Guest name:</label>
+			<input type="text" id="guestname"  name="room[guestname]"/>
+			<%= submit_tag("CREATE", class: "button tiny") %>
+			<% end %>
 		</div>
 
 	</div>
 
 	<div class="large-6 columns">
-		<div class="panel" data-equalizer-watch>
-			<h4>Join a room</h4>
-			<div class="panel-body">
-				<div class="form-group">
-					<input type="text" placeholder="Room Name" id="room1"/>
-				</div>
-				<div class="form-group">
-					<label for="name">Your name:</label>
-					<input type="text" id="name1"/>
-				</div>
-				<button class="button tiny" type="submit" onclick="join()" class="btn btn-default">JOIN</button>
-
-			</div>
+			<div class="panel" data-equalizer-watch>
+				<h4>Join a room</h4>
+			<%= form_tag(game_path,  method: "post") do %>
+			<input type="text" placeholder="Room Name" name="room[room]"/>
+			<label for="hostname">Your name:</label>
+			<input type="text" id="hostname"  name="room[name]"/>
+			<%= submit_tag("JOIN", class: "button tiny") %>
+			<% end %>
 		</div>
 	</div>
 

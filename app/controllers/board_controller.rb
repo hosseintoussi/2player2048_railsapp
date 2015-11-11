@@ -1,14 +1,13 @@
 class BoardController < ApplicationController
-
   skip_before_action :verify_authenticity_token
 
   def index
   end
 
   def game
-    if !session[:room] || !session[:user]
-    #  redirect_to '/'
-    end
+    join_room
+    redirect_to root_path, alert: 'Sorry! something
+                           went wrong!' if !session[:room] || !session[:user]
   end
 
   def start
@@ -17,14 +16,17 @@ class BoardController < ApplicationController
   end
 
   def create_room
-    if !$redis.exists(params['room'])
+    if !$redis.exists(room_params['room'])
       data = start
-      room_info = {'room' => params['room'], 'hostname' => params['hostname'], 'guestname' => params['guestname'], 'hostin' => 0, 'guestin' => 0, 'turn'=>'hostname'}
+      room_info = {'hostin' => 0, 'guestin' => 0, 'turn'=>'hostname'}
+      room_info.merge!(room_params)
       data = room_info.merge(data)
-      $redis.set(params['room'],data.to_json)
-      render :json =>  data
+      $redis.set(room_params['room'],data.to_json)
+      redirect_to root_path, notice: 'Room successfully created!
+                             Feel free to join the room whenever you want.'
     else
-      return 0
+      redirect_to root_path, alert: 'Sorry! We couldn\'t create
+                             the room for you!'
     end
   end
 
@@ -34,18 +36,17 @@ class BoardController < ApplicationController
   end
 
   def join_room
-    if $redis.exists(params['room'])
-      data = JSON.parse($redis.get(params['room']))
-      if data['hostname'] == params['name'] || data['guestname'] == params['name']
-        session[:room]=params['room']
-        session[:user]=params['name']
+    if $redis.exists(room_params['room'])
+      data = JSON.parse($redis.get(room_params['room']))
+      if data['hostname'] == room_params['name'] || data['guestname'] == room_params['name']
+        session[:room] = room_params['room']
+        session[:user] = room_params['name']
       else
-        return 0
+        redirect_to root_path, alert: 'Sorry! We couldn\'t get you into the room!'
       end
     else
-      return 0
+      redirect_to root_path, alert: 'Sorry! We couldn\'t get you into the room!'
     end
-    render :json =>  data
   end
 
   def send_chat
@@ -93,4 +94,9 @@ class BoardController < ApplicationController
     Net::HTTP.post_form(uri, :message => message.to_json)
   end
 
+  private
+
+  def room_params
+    params.require(:room).permit(:room, :hostname, :guestname, :name)
+  end
 end
