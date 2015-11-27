@@ -1,9 +1,9 @@
-<body onload="loadgame()" >
+<body onload="loadgame()">
 	<div class="row" style="margin-top: 2em" data-equalizer>
 		<div class="game">
 			<div class="large-12 small-centered columns">
 				<div class="panel">
-					<div><h4 id="room-name"><span>Room: </span><%= session[:room]%></h4></div>
+					<div><span>Room: </span><h4 id="room-name"><%= session[:room] %></h4></div>
 					<div><span>Who's turn is it now: <span><span id="turn"></span></div>
 					<div><span>Current Score:</span><span id="score">0</span></div>
 				</div>

@@ -13,8 +13,13 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+gem 'responders', '~> 2.0'
 gem 'redis'
 gem 'redis-rails'
+gem 'ohm'
+gem 'ohm-contrib'
+gem 'redis-persistence'
+gem 'redis-objects'
 gem 'faye'
 gem 'thin'
 # Use jquery as the JavaScript library
@@ -23,6 +28,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'foundation-rails'
 gem 'gon'
+gem 'httparty'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # Use Unicorn as the app server

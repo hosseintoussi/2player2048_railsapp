@@ -1,4 +1,4 @@
-class Play
+class GameEngine
 
   attr_accessor :board, :size, :score, :gameover
 

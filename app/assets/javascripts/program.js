@@ -1,20 +1,13 @@
-window.addEventListener("keydown", function(e) {
-    //arrow keys
-    if([13, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
-    	e.preventDefault();
-    }
-}, false);
 
 function loadgame(){
 	$.ajax({
 		type: "POST",
 		url: "/load",
-		data: {'room' : document.getElementById("room-name").innerHTML},
+		data: {"room" : {"room" : document.getElementById("room-name").innerHTML}},
 		success: function(data) {
-			console.log(data)
-			$('#tile-container').html(drawer(data.board));
 			$('#score').html(data.score);
-			$('#turn').html(data[data.turn]);
+			$('#turn').html(data.turn);
+			$('#tile-container').html(drawer(data.board));
 			console.log('game loaded.');
 		}
 	});
@@ -45,7 +38,7 @@ $(function(){
 	console.log("im here");
 	var room = "/"+document.getElementById("room-name").innerHTML+"";
 	var chat = "/"+document.getElementById("room-name").innerHTML+"/chat";
-	var client = new Faye.Client('http://localhost:9292/faye');
+	var client = new Faye.Client('http://127.0.0.1:9292/faye');
 
 	client.subscribe(room, function(data) {
 					//alert(data)
@@ -72,6 +65,13 @@ function move(move){
 }
 
 $(document).ready(function() {
+window.addEventListener("keydown", function(e) {
+    //arrow keys
+    if([13, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+    	e.preventDefault();
+    }
+}, false);
+
 	console.log("test")
 		// action on key down
 	$(document).keydown(function(e) {
