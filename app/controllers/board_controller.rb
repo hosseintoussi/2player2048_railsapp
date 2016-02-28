@@ -1,6 +1,6 @@
 class BoardController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_filter :set_room, only: [:create_room, :load_game, :move, :game]
+  before_filter :set_room, only: [:create_room, :load_game, :move, :game, :send_chat]
   respond_to :html, :js
 
   include Movable
@@ -35,15 +35,15 @@ class BoardController < ApplicationController
   end
 
   def send_chat
-    FayeSender.message(params[:room], params[:user], params[:message])
+    FayeSender.message("/#{room_params['room']}", room_params[:user], room_params[:message])
+    render nothing: true
   end
 
   def move
     @room.read!
-    make_move(@room, params['move']) if @room[:turn] == params['user']
-    toggle_turn(@room)
+    make_move(@room, room_params['move']) if @room.turn == room_params['user']
     @room.write
-    FayeSender.broadcast(params['room'], @room.read)
+    FayeSender.broadcast("/#{room_params['room']}", @room.read)
     render json: @room.read
   end
 
@@ -54,6 +54,6 @@ class BoardController < ApplicationController
   end
 
   def room_params
-    params.require(:room).permit(:room, :hostname, :guestname, :name)
+    params.require(:room).permit(:room, :hostname, :guestname, :name, :user, :move, :message)
   end
 end

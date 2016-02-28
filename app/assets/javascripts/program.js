@@ -1,4 +1,11 @@
 
+window.addEventListener("keydown", function(e) {
+    //arrow keys
+    if([13, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+    	e.preventDefault();
+    }
+}, false);
+
 function loadgame(){
 	$.ajax({
 		type: "POST",
@@ -29,23 +36,15 @@ function drawer(data){
 	return drawn_board;
 }
 
-
-function sendchat(){
-
-}
-
 $(function(){
-	console.log("im here");
 	var room = "/"+document.getElementById("room-name").innerHTML+"";
 	var chat = "/"+document.getElementById("room-name").innerHTML+"/chat";
-	var client = new Faye.Client('http://127.0.0.1:9292/faye');
+	var client = new Faye.Client('http://localhost:9292/faye');
 
 	client.subscribe(room, function(data) {
-					//alert(data)
-					//console.log(data)
 					$('#tile-container').html(drawer(data.board));
 					$('#score').html(data.score);
-					$('#turn').html(data[data.turn]);
+					$('#turn').html(data.turn);
 				});
 
 	client.subscribe(chat, function(data) {
@@ -53,39 +52,22 @@ $(function(){
 	});
 });
 
+
 function move(move){
 	$.ajax({
 		type: "POST",
 		url: "/move",
-		data: {'move' : move, 'room' : document.getElementById("room-name").innerHTML, 'user' : document.getElementById("user-name").innerHTML},
+		data: {'room': {'move' : move, 'room' : document.getElementById("room-name").innerHTML, 'user' : document.getElementById("user-name").innerHTML}},
 		success: function(data) {
 			console.log('moved...');
+
 		}
 	});
 }
 
-$(document).ready(function() {
-window.addEventListener("keydown", function(e) {
-    //arrow keys
-    if([13, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
-    	e.preventDefault();
-    }
-}, false);
-
-	console.log("test")
+$(function() {
 		// action on key down
 	$(document).keydown(function(e) {
-		if(e.which == 13) {
-			$.ajax({
-				type: "POST",
-				url: "/sendchat",
-				data: {'room' : document.getElementById("room-name").innerHTML, 'user' : document.getElementById("user-name").innerHTML, 'message' : document.getElementById("chat-input").value},
-				success: function(data) {
-					$('#chat-input').val("");
-					console.log('message sent...');
-				}
-			});
-		}
 
 		if(e.which == 38) {
 			move('w');

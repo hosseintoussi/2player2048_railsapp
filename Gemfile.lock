@@ -79,11 +79,6 @@ GEM
       sass (>= 3.3.0, < 3.5)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
-    gon (6.0.1)
-      actionpack (>= 3.0)
-      json
-      multi_json
-      request_store (>= 1.0)
     hashr (0.0.22)
     hiredis (0.6.0)
     http_parser.rb (0.6.0)
@@ -178,7 +173,6 @@ GEM
       redis-store (~> 1.1.0)
     redis-store (1.1.7)
       redis (>= 2.2)
-    request_store (1.2.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     sass (3.4.19)
@@ -227,7 +221,6 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   faye
   foundation-rails
-  gon
   httparty
   jbuilder (~> 2.0)
   jquery-rails
@@ -248,4 +241,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

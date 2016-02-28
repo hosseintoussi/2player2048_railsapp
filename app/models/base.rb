@@ -1,5 +1,4 @@
 class Base
-
   def write
     Redis.current.set(room, to_json) unless room.blank?
   end

@@ -10,7 +10,6 @@ class Room < Base
     @room = attributes[:room]
     @hostname = attributes[:hostname]
     @guestname = attributes[:guestname]
-
   end
 
   def player_can_join?(params)
