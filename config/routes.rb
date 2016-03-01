@@ -10,7 +10,7 @@ post '/start' => 'board#start'
 post '/create' => 'board#create_room'
 post '/update' => 'board#update_gamedata'
 post '/load' => 'board#load_game'
-post '/sendchat' => 'board#send_chat'
+post '/sendchat' => 'chat#send_chat'
 get '/game' => 'board#game'
 post '/game' => 'board#game'
 

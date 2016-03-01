@@ -34,14 +34,10 @@ class BoardController < ApplicationController
     render json: gamedata
   end
 
-  def send_chat
-    FayeSender.message("/#{room_params['room']}", room_params[:user], room_params[:message])
-    render nothing: true
-  end
-
   def move
     @room.read!
-    make_move(@room, room_params['move']) if @room.turn == room_params['user']
+    return unless @room.turn == room_params['user']
+    make_move(@room, room_params['move'])
     @room.write
     FayeSender.broadcast("/#{room_params['room']}", @room.read)
     render json: @room.read
@@ -54,6 +50,6 @@ class BoardController < ApplicationController
   end
 
   def room_params
-    params.require(:room).permit(:room, :hostname, :guestname, :name, :user, :move, :message)
+    params.require(:room).permit(:room, :hostname, :guestname, :name, :user, :move)
   end
 end

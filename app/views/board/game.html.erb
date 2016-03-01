@@ -60,12 +60,11 @@
 
 					<textarea type="text" readonly="readonly" rows="25" id="chat-area"></textarea>
 					<%= form_tag(sendchat_path,  method: "post", remote: true) do %>
-
 					<div class="row collapse">
-						<input name="room[user]" type="hidden" value="<%= session[:user] %>" />
-						<input name="room[room]" type="hidden" value="<%= session[:room] %>" />
+						<input name="chat[user]" type="hidden" value="<%= session[:user] %>" />
+						<input name="chat[room]" type="hidden" value="<%= session[:room] %>" />
 						<div class="small-10 columns">
-							<input type="text" placeholder="Type your message here.." id="chat-input", name="room[message]" >
+							<input type="text" placeholder="Type your message here.." id="chat-input", name="chat[message]" >
 						</div>
 						<div class="small-2 columns">
 							<%= submit_tag("Send", class: "button postfix") %>

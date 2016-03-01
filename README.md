@@ -5,12 +5,17 @@
 
 ### How do I get set up? ###
 
-To get the game running: 
+To get the game running:
 
 * Make sure Redis server is running.
 
-* Get Faye server running using: 
+* Get Faye server running using:
 
 `rackup faye.ru -s thin -E production`
 
 * Start up rails application!
+
+### ToDo ###
+* drying up boards_controller
+* Frontend cleanup
+* Specs
